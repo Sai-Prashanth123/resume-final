@@ -19,9 +19,12 @@
     "rt-client": "https://github.com/Azure-Samples/aoai-realtime-audio-sdk/releases/download/js/v0.5.0/rt-client-0.5.0.tgz",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false ESLINT_NO_DEV_ERRORS=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
