@@ -160,3 +160,27 @@
 .toggle-button:hover {
   color: #1B29CB;
 } 
+
+.password-input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-input-container input {
+  flex-grow: 1;
+}
+
+.toggle-password-visibility {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.toggle-password-visibility:hover {
+  color: #333;
+}

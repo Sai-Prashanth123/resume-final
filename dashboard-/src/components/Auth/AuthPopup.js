@@ -9,6 +9,8 @@ const AuthPopup = ({ onClose, onSuccess }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { login, signup, resetPassword } = useAuth();
 
   const handleSubmit = async (e) => {
@@ -77,39 +79,57 @@ const AuthPopup = ({ onClose, onSuccess }) => {
           
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="password-input-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button 
+                type="button"
+                className="toggle-password-visibility"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
           
           {!isLogin && (
             <div className="form-group">
               <label htmlFor="confirmPassword">Confirm Password</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
+              <div className="password-input-container">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+                <button 
+                  type="button"
+                  className="toggle-password-visibility"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? "Hide" : "Show"}
+                </button>
+              </div>
             </div>
           )}
-        <div className='forgot-password'>
-          {isLogin && (
-            
-              <button 
-                type="button" 
-                className="forgot-password-button" 
-                onClick={handleForgotPassword}
-                disabled={loading}
-              >
-                Forgot Password?
-              </button>
-            )}
+          <div className='forgot-password'>
+            {isLogin && (
+              
+                <button 
+                  type="button" 
+                  className="forgot-password-button" 
+                  onClick={handleForgotPassword}
+                  disabled={loading}
+                >
+                  Forgot Password?
+                </button>
+              )}
             </div>
           <div className="auth-actions">
             
